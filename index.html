@@ -20,11 +20,11 @@ body,h1,h2,h3,h4,h5 {font-family: "Heebo", sans-serif}
   <h3 class="w3-padding-large w3-left">Freelance illustrator.</h3>
   <h4 class="w3-padding-large w3-left">Hello! My name is Tana. I am a freelance illustrator based in California.</h4>
 <p></p>
-
- <h2><a href="mailto:someone@example.com" onclick="w3_close()" class="w3-bar-item w3-button">Mail</a> 
+<hr><hr><hr>
+ <h3 class="w3-padding-large w3-left"><a href="mailto:someone@example.com" onclick="w3_close()" class="w3-bar-item w3-button">Mail</a> 
   <a href="https://youtu.be/9bZkp7q19f0" onclick="w3_close()" class="w3-bar-item w3-button">Pixiv</a> 
   <a href="https://twitter.com/hibiscusdrop" onclick="w3_close()" class="w3-bar-item w3-button">Twitter</a>
-</h2>
+</h3>
 </nav>
 
 <header class="w3-container w3-top w3-hide-large w3-white w3-xlarge w3-padding-16">
@@ -40,8 +40,8 @@ body,h1,h2,h3,h4,h5 {font-family: "Heebo", sans-serif}
   
   <div class="w3-row">
     <div class="w3-third">
-      <img src="https://source.unsplash.com/400x400?mountain" style="width:100%" onclick="onClick(this)" alt="Sample 1">
-      <img src="https://source.unsplash.com/400x400?water" style="width:100%" onclick="onClick(this)" alt="Sample 2">
+      <img src="images/harin_400crop.png" style="width:100%" onclick="onClick(this,'images/harin_15_bust.png')" alt="Harin 1.5 Bust">
+      <img src="https://source.unsplash.com/400x400?water" style="width:100%" onclick="onClick(this,'images/jorilol.png')" alt="Jori">
       <img src="https://source.unsplash.com/400x400?cliff" style="width:100%" onclick="onClick(this)" alt="Sample 3">
     </div>
 
@@ -99,8 +99,8 @@ function w3_close() {
   document.getElementById("myOverlay").style.display = "none";
 }
 
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
+function onClick(element, link) {
+  document.getElementById("img01").src = link;
   document.getElementById("modal01").style.display = "block";
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
