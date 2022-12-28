@@ -90,15 +90,20 @@
                 console.log(result); // do something with array
 
                 var invoiceArray = result;
-
+                
                 for(var i = 0; i < result.length; i++){
                     for(var j = 0; j < idArray.length; j++){
                         if (result[i].includes(idArray[j]))
-                            $("#demo").append("<p>" + idArray[j] + "</p>");
+                            for(var k=0; k<idArray.length; k++){
+                                if(!(idArray[k] in result[k])){
+                                    $("#demo").append("<p>" + idArray[j] + "</p>");
+                                }
+                            }
                     }
                 }
             };
         };
+        
         </script>
     <br><br><br><br>
     <div class="text">
