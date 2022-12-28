@@ -91,18 +91,19 @@
 
                 var invoiceArray = result;
                 
-                var seen = {};
+                var seen = [];
                 for(var i = 0; i < result.length; i++){
                     for(var j = 0; j < idArray.length; j++){
                         if (result[i].includes(idArray[j]))
                             for(var k=0; k<idArray.length; k++){
-                                if(!(idArray[k] in seen){
+                                if(!(idArray[k] in seen)){
                                     $("#demo").append("<p>" + idArray[j] + "</p>");
                                     seen.push(idArray[k]);
                                 }
                             }
                     }
                 }
+                console.log(seen);
             };
         };
 
