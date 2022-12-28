@@ -1,0 +1,113 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+    body{
+        background-color:black;
+        text-align: center;
+    }
+    h1{
+        color:white;
+    }
+    p{
+        color:white;
+    }
+    h2{
+        color:coral;
+    }
+    div{
+        text-align:center;
+        color:coral;
+    }
+    input[type=reset]{
+        background-color: coral;
+            border: none;
+            text-decoration: none;
+            color: black;
+            padding: 10px 10px;
+            margin: 20px 20px;
+            cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+    <script>
+        var idArray = [];
+    </script>
+
+<h1>SKU Matcher</h1>
+<p>For inventory checking purposes:</p>
+<p>Find the SKU of items listed on Shopify that matched with items sold in-store.</p>
+
+    <form>
+    <div class="text">
+
+        <center><input type='reset' value='Reset Files'/></center>
+        <br>
+
+        <p>Step 1: Upload Shopify inventory .csv file</p>
+        <h2>Inventory</h2>
+
+        <input type='file' id="inputFile1" accept='.csv' onchange='openFile(event)'>
+        
+        <script for="Shopify Inventory">
+        const openFile = (e) => {
+            const reader1 = new FileReader(); // filereader
+            reader1.readAsText(e.target.files[0]); // read as text
+            reader1.onload = () => {
+                const text1 = reader1.result;
+                const result = text1.split(/\r?\n/); // split on every new line
+                
+                for(var i = 0; i < result.length; i++){
+                    var id = result[i].split(",")[8];
+                    idArray.push(id);
+                };
+                console.log(idArray); // do something with array
+             };
+            };
+        </script>
+
+    </div>
+<br><br>
+    <div class="text">
+
+        <p>Step 2: Upload Lightspeed invoice .txt file</p>
+        <h2>Invoice</h2>
+
+        <input type='file' id="inputFile2" accept='text/plain' onchange='openFile2(event)'>
+
+        <script for="Lightspeed Invoices">
+        const openFile2 = (e) => {
+            const reader2 = new FileReader(); // filereader
+            reader2.readAsText(e.target.files[0]); // read as text
+            reader2.onload = () => {
+                const text2 = reader2.result;
+                const result = text2.split(/\r?\n/); // split on every new line
+                console.log(result); // do something with array
+
+                var invoiceArray = result;
+
+                for(var i = 0; i < result.length; i++){
+                    for(var j = 0; j < idArray.length; j++){
+                        if (result[i].includes(idArray[j]))
+                            $("#demo").append("<p>" + idArray[j] + "</p>");
+                    }
+                }
+            };
+        };
+        </script>
+    <br><br><br><br>
+    <div class="text">
+        <h1>Result</h1>
+        <div id="demo"></div>
+    </div>
+
+
+    </div>
+    <br><br>
+    </form>
+
+</body>
+
+</html>
